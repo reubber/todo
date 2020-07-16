@@ -1,6 +1,6 @@
 import { TOGGLE_TODO, ADD_TODO } from './actions'
 
-const initialState = []
+export const initialState = []
 
 const todos = (state = initialState, action) => {
   // eslint-disable-next-line default-case
@@ -23,6 +23,8 @@ const todos = (state = initialState, action) => {
         }
       })
   }
+
+  return state
 }
 
 export default todos
