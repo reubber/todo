@@ -14,10 +14,10 @@
     "uuid": "^8.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
@@ -50,6 +50,8 @@
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^5.3.19",
     "chai": "^4.2.0",
-    "deep-freeze": "^0.0.1"
+    "customize-cra": "^1.0.0",
+    "deep-freeze": "^0.0.1",
+    "react-app-rewired": "^2.1.6"
   }
 }
