@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from './App'
-import reducer from './reducers/todos'
+import reducer from './reducers'
 
 const store = createStore(reducer)
+
+store.subscribe(() => {
+  console.log('state: ', store.getState())
+})
 
 ReactDOM.render(
   <React.StrictMode>
