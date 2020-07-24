@@ -9,12 +9,14 @@ import 'milligram'
 const App = () => (
   <div style={{ display: 'flex', justifyContent: 'space-around', padding: 30 }}>
     <div>
+      <h2>TODO</h2>
       <Form />
       <TodosList />
       <Filter />
     </div>
 
     <div>
+      <h2>CEP</h2>
       <SearchCep />
     </div>
   </div>
