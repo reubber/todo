@@ -12,8 +12,10 @@ export const initialState = {
 const address = (state = initialState, action) => {
   // eslint-disable-next-line default-case
   switch (action.type) {
-    case UPDATE_ADDRESS: return action.payload
+    case UPDATE_ADDRESS:
+      return action.payload
   }
+
   return state
 }
 

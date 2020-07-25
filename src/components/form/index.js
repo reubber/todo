@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { addTodo } from '@reducers/todos/actions-creator'
 
 const Form = ({ handleAddTodo }) => (
-  
+
   <form onSubmit={handleAddTodo}>
-    <input type='text' name='todo' required/>
+    <input type='text' name='todo' required />
     <button type='submit'>Adicionar</button>
   </form>
 )

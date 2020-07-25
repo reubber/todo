@@ -1,16 +1,12 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import SearchCep from './search-cep'
 import ajax from '@fdaciuk/ajax'
+import { updateAddressFunc } from '@reducers/address/actions-creators'
 
 class SearchCepContainer extends PureComponent {
   
   state = {
-    address: '',
-    city: '',
-    code: '',
-    district: '',
-    state: '',
-    status: 1,
     isFetching: false
   }
 
@@ -21,21 +17,28 @@ class SearchCepContainer extends PureComponent {
     const cep = e.target.cep.value
     const response = await ajax().get('https://ws.apicep.com/cep.json', { code: cep })
     
-    setTimeout(() => {
-      this.setState({ isFetching: false })
-      console.log(response)
-      this.setState(response)
-    }, 1000)
+    this.setState({ isFetching: false })
+    this.props.updateAddress(response)
+   
   }
 
   render () {
     return (
       <SearchCep 
       {...this.state}
+      {...this.props.address}
       handleSubmit={this.handleSubmit}
        />
     )
   }
 }
 
-export default SearchCepContainer
+const mapStateToProps = (state) => ({
+  address: state.address
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  updateAddress: (data) => dispatch(updateAddressFunc(data))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchCepContainer)
