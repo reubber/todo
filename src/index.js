@@ -1,33 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import App from './App'
 import reducer from './reducers'
 
-const initialState = {
-  todos: [{
-    text: '@reubbers',
-    id: '123',
-    completed: true
-  }],
-
-  address: {
-    address: 'Rua agronomando rangel 013-A',
-    city: 'Boa Viagem',
-    code: '63870-000',
-    district: 'Centro',
-    state: 'CE',
-    status: 200
-  }
+const logger = ({ dispatch, getState }) => (next) => (action) => {
+  console.log('LOGER will dispatch:', action)
+  const nextAction = next(action)
+  console.log('LOGER next action', nextAction)
+  return nextAction
 }
 
-const store = createStore(reducer, initialState)
+const store = createStore(reducer, applyMiddleware(logger))
 const renderState = () => {
   console.log('state: ', store.getState())
 }
 
-store.subscribe(renderState, initialState)
+store.subscribe(renderState)
 renderState()
 
 ReactDOM.render(
